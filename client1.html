@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <style>
+            .xyz{
+              display: inline-block;
+              width:23%;
+              padding: 1%;
+              margin: 1%;
+              box-shadow: 0px 0px 5px gray;
+
+
+            }
+        </style>
+        <script>
+        function one(){
+            var data = "<h1>Book List</h1>"
+            fetch("http://localhost:1111")
+            .then(response=>response.json())
+            .then(bookArray=>{
+                
+                bookArray.map((item,index)=>{
+                    data=data+"<p>"+ item +"</p>"
+                })
+                document.getElementById("container").innerHTML=data;
+
+            })
+            //document.getElementById("container").innerHTML=data;
+        }
+
+        function two(){
+            var data="<h1>Books data</h1>"
+            fetch("http://localhost:2222")
+            .then(response=>response.json())
+            .then(bookArray=>{
+                bookArray.map((item,index)=>{
+                    data = data +"<div class='xyz'>";
+                    data=data + "<p>" + item.name + "</p>" ;
+                    data=data + "<p>" + item.price + "</p>" ;
+                    data=data + "<p>" + item.qty + "</p>" ;
+                    data = data + "<hr color = 'red'; size = 1/> </div>"
+                                })
+                document.getElementById("container").innerHTML=data;
+            })
+        }
+        </script>
+    </head>
+    <body>
+        <div align="çenter">
+        <h1>Javascript, fetch() and Node JS</h1>
+        <button onclick="one()">BookList1</button>
+        <button onclick="two()">BookList2</button>
+        </div>
+        <br/>
+
+        <div id="container">
+
+        </div>
+
+    </body>
+</html>

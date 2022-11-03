@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <script>
+         function getbook(){
+            loading();
+            var data = "<h1>Book List</h1>";
+            fetch("http://localhost:1234/booklist")
+            .then(response=>response.json())
+            .then(bookArray=>{
+                bookArray.map((name,index)=>{
+                data=data+ "<p>" + name + "</p>"
+            })
+            document.getElementById("container").innerHTML = data;
+        })
+         }
+
+         function getuser(){
+            loading();
+            var data = "<h1>User List</h1>";
+            fetch("http://localhost:1234/userlist")
+            .then(response=>response.json())
+            .then(userArray=>{
+                userArray.map((name,index)=>{
+                data=data+ "<p>" + name + "</p>"
+            })
+            document.getElementById("container").innerHTML = data;
+        })
+         }
+
+         function getcity(){
+            loading();
+            var data = "<h1>City List</h1>";
+            fetch("http://localhost:1234/citylist")
+            .then(response=>response.json())
+            .then(cityArray=>{
+                cityArray.map((name,index)=>{
+                data=data+ "<p>" + name + "</p>"
+            })
+            document.getElementById("container").innerHTML = data;
+        })
+         }
+
+         function getcompany(){
+            loading();
+            var data = "<h1>Company List</h1>";
+            fetch("http://localhost:1234/companylist")
+            .then(response=>response.json())
+            .then(companyArray=>{
+                companyArray.map((name,index)=>{
+                data=data+ "<p>" + name + "</p>"
+            })
+            document.getElementById("container").innerHTML = data;
+        })
+         }
+         function loading(){
+            var data = "<h1>Loading...</h1>";
+            document.getElementById("container").innerHTML=data;
+         }
+
+
+        </script>
+    </head>
+    <body>
+        <div align="center">
+            <h1>Javascript+Node+Express+fetch()</h1>
+            <button onclick="getbook()">Book List</button>
+            <button onclick="getuser()">User List</button>
+            <button onclick="getcity()">City List</button>
+            <button onclick="getcompany()">Company List</button>
+
+        </div>
+        <div id="container">
+
+        </div>
+    </body>
+</html>
